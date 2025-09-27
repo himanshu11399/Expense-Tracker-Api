@@ -15,5 +15,5 @@ const job = new CronJob("*/20 * * * *", () => {
 });
 
 
-
+job.start();
 export default job;
