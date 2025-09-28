@@ -2,7 +2,7 @@ import { CronJob } from "cron";
 import https from "https";
 
 // Runs every 20 seconds
-const job = new CronJob("*/20 * * * *", () => {
+const job = new CronJob("*/20 * * * * *", () => {
   https
     .get(process.env.API_URL, (res) => {
       if (res.statusCode === 200) {
@@ -13,6 +13,9 @@ const job = new CronJob("*/20 * * * *", () => {
     })
     .on("error", (e) => console.error("Error while sending request", e));
 });
+
+// start the job
+job.start();
 
 
 export default job;
